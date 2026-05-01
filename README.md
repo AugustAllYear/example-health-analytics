@@ -10,24 +10,22 @@ Example Health Analytics – a healthcare consultancy needing local, reproducibl
 
 ```
 example-health-analytics/
-├── .gitignore
+├── config.yaml               # user‑editable configuration
+├── config.default.yaml       # default template (committed)
+├── .gitignore                # ignore config.yaml (but keep .default)
 ├── .gitattributes
 ├── README.md
 ├── requirements.txt
 ├── scripts/
-│   ├── 00_generate_data.py        # creates claims.parquet, providers.json
-│   ├── 01_setup.sql               # create schemas (DuckDB native)
-│   ├── 02_load.sql                # load data (CSV/Parquet/JSON)
-│   ├── 03_transform.sql           # flatten JSON, create core tables
-│   ├── 04_analysis.sql            # CTEs, complex queries, aggregations
-│   ├── 05_performance.sql         # EXPLAIN, optimisation tricks
-│   └── run_all.py                 # optional: executes all SQL scripts
-├── data/                          # gitignored – generated locally
-│   ├── claims.parquet
-│   └── providers.json
+│   ├── 00_generate_data.py   # uses config
+│   ├── run_all.py            # reads config, runs SQL scripts
+│   ├── 01_setup.sql
+│   ├── 02_load.sql
+│   ├── 03_transform.sql
+│   ├── 04_analysis.sql
+│   └── 05_performance.sql
+├── data/                     # gitignored – generated
 └── results/
-    └── sample_output.md
-
 ```
 
 
