@@ -1,0 +1,14 @@
+# example-health-venv
+
+example-health-venv/
+__pycache__/
+*.pyc
+
+# data files (generated)
+data/*.parquet
+data/*.csv
+data/*.json
+
+# DuckDB database file (if persistent)
+*.duckdb
+
