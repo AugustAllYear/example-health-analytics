@@ -7,25 +7,43 @@ A healthcare analytics consultancy project. The client needed a local, reproduci
 ## Client (mock)
 Example Health Analytics – a healthcare consultancy needing local, reproducible analytics to identify cost drivers and provider efficiency.
 
+## Tech stack
+- Python 3.10+
+- DuckDB (local analytics database)
+- Git + GitHub
+
+## How to run
+1. Clone repo
+2. Create virtual environment (see instructions in README)
+3. Install dependencies: `pip install -r requirements.txt`
+4. Generate synthetic data: `python scripts/00_generate_data.py`
+5. Run DuckDB CLI or Python script to execute `.sql` files in order
+
+Example using DuckDB CLI:
+```bash
+duckdb -init scripts/01_setup.sql
+duckdb -init scripts/02_load.sql
+...
+
 
 ```
-example-health-analytics/
-├── config.yaml               # user‑editable configuration
-├── config.default.yaml       # default template (committed)
-├── .gitignore                # ignore config.yaml (but keep .default)
-├── .gitattributes
-├── README.md
-├── requirements.txt
-├── scripts/
-│   ├── 00_generate_data.py   # uses config
-│   ├── run_all.py            # reads config, runs SQL scripts
-│   ├── 01_setup.sql
-│   ├── 02_load.sql
-│   ├── 03_transform.sql
-│   ├── 04_analysis.sql
-│   └── 05_performance.sql
-├── data/                     # gitignored – generated
-└── results/
+	example-health-analytics/
+	├── config.yaml               # user‑editable configuration
+	├── config.default.yaml       # default template (committed)
+	├── .gitignore                # ignore config.yaml (but keep .default)
+	├── .gitattributes
+	├── README.md
+	├── requirements.txt
+	├── scripts/
+	│   ├── 00_generate_data.py   # uses config
+	│   ├── run_all.py            # reads config, runs SQL scripts
+	│   ├── 01_setup.sql
+	│   ├── 02_load.sql
+	│   ├── 03_transform.sql
+	│   ├── 04_analysis.sql
+	│   └── 05_performance.sql
+	├── data/                     # gitignored – generated
+	└── results/
 ```
 
 
