@@ -12,3 +12,7 @@ data/*.json
 # DuckDB database file (if persistent)
 *.duckdb
 
+config.yaml
+vitalis.duckdb
+example-health.duckdb
+
