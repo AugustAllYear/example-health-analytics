@@ -18,4 +18,3 @@ sql_scripts:
   - scripts/03_transform.sql 
   - scripts/04_analysis.sql 
   - scripts/05_performance.sql
-
