@@ -1,24 +1,21 @@
-# Default config for Eample Health Analysis project
-# Copy this file to config.yaml and edit as needed.
-# Config.yaml is ignored by git.
-
-data_dir: "data"
-db_file: "vitals.duckdb"
-
-generation:
-    num_claimes: 100000
-    num_providers: 100
-    random_seed: 42
-
-duckdb:
-    schemas: 
-	- staging
-	- core
-	- marts
-    sql_scripts:
-	- scripts/01_setup/sql
-	- scritps/02_load.sql
-	- scripts/03_transform.sql
-	- scripts/04_analysis.sql
-	- scripts/05_performance.sql
+# Default config for Example Health Analysis project 
+# Copy this file to config.yaml and edit as needed. 
+# Config.yaml is ignored by git. 
+data_dir: "data" 
+db_file: "example-health.duckdb" 
+generation: 
+  num_claims: 100000 
+  num_providers: 100 
+  random_seed: 42 
+duckdb: 
+  schemas: 
+    - staging 
+    - core 
+    - marts 
+sql_scripts: 
+  - scripts/01_setup/sql 
+  - scripts/02_load.sql 
+  - scripts/03_transform.sql 
+  - scripts/04_analysis.sql 
+  - scripts/05_performance.sql
 
