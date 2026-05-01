@@ -1,6 +1,13 @@
 # example-health-analytics
 A healthcare analytics consultancy project. The client needed a local, reproducible analytics layer to identify cost drivers and provider efficiency. 
 
+
+**Portfo**Portfolio project** demonstrating SQL, data warehousing, semi‑structured data, and performance tuning using **DuckDB** for a mock healthcare analytics client.
+
+## Client (mock)
+Example Health Analytics – a healthcare consultancy needing local, reproducible analytics to identify cost drivers and provider efficiency.
+
+
 ```
 example-health-analytics/
 ├── .gitignore
@@ -24,3 +31,13 @@ example-health-analytics/
 ```
 
 
+### Quick Start
+```
+	git clone https://github.com/yourusername/example-health-analytics.git
+	cd example-health-analytics
+	python3.10 -m venv venv
+	source venv/bin/activate
+	pip install -r requirements.txt
+	python scripts/00_generate_data.py
+	# then run DuckDB SQL scripts in order (or use run_all.py)	
+```
