@@ -1,7 +1,0 @@
-ATTACH 'example-health.duckdb' AS db;
-USE db;
-
-CREATE SCHEMA IF NOT EXISTS staging;
-CREATE SCHEMA IF NOT EXCISTS core;
-CREATE SCHEMA IF NOT EXISTS marts;
-
