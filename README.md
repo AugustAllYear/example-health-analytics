@@ -1,8 +1,6 @@
 # example-health-analytics
-A healthcare analytics consultancy project. The client needed a local, reproducible analytics layer to identify cost drivers and provider efficiency. 
 
-
-**Portfo**Portfolio project** demonstrating SQL, data warehousing, semi‑structured data, and performance tuning using **DuckDB** for a mock healthcare analytics client.
+A healthcare analytics consultancy project. Demonstrates SQL, data warehousing, semi‑structured data, and performance tuning using **DuckDB**.
 
 ## Client (mock)
 Example Health Analytics – a healthcare consultancy needing local, reproducible analytics to identify cost drivers and provider efficiency.
@@ -12,48 +10,88 @@ Example Health Analytics – a healthcare consultancy needing local, reproducibl
 - DuckDB (local analytics database)
 - Git + GitHub
 
-## How to run
-1. Clone repo
-2. Create virtual environment (see instructions in README)
-3. Install dependencies: `pip install -r requirements.txt`
-4. Generate synthetic data: `python scripts/00_generate_data.py`
-5. Run DuckDB CLI or Python script to execute `.sql` files in order
+## Project structure
 
-Example using DuckDB CLI:
+```
+example-health-analytics/
+├── config.default.yaml
+├── .gitignore
+├── README.md
+├── requirements.txt
+├── scripts/
+│ ├── 00_generate_data.py
+│ ├── 01_setup.sql
+│ ├── 02_load.sql
+│ ├── 03_transform.sql
+│ ├── 04_analysis.sql
+│ ├── 05_performance.sql
+│ └── run_all.py
+├── data/ (generated)
+└── results/
+```
+
+## Quick start
 ```bash
-duckdb -init scripts/01_setup.sql
-duckdb -init scripts/02_load.sql
-...
-
-
-```
-	example-health-analytics/
-	├── config.yaml               # user‑editable configuration
-	├── config.default.yaml       # default template (committed)
-	├── .gitignore                # ignore config.yaml (but keep .default)
-	├── .gitattributes
-	├── README.md
-	├── requirements.txt
-	├── scripts/
-	│   ├── 00_generate_data.py   # uses config
-	│   ├── run_all.py            # reads config, runs SQL scripts
-	│   ├── 01_setup.sql
-	│   ├── 02_load.sql
-	│   ├── 03_transform.sql
-	│   ├── 04_analysis.sql
-	│   └── 05_performance.sql
-	├── data/                     # gitignored – generated
-	└── results/
+git clone https://github.com/yourusername/example-health-analytics.git
+cd example-health-analytics
+python -m venv venv
+source venv/bin/activate      # or `venv\Scripts\activate` on Windows
+pip install -r requirements.txt
+cp config.default.yaml config.yaml
+python scripts/00_generate_data.py
+python scripts/run_all.py
 ```
 
+All sql scriptes are executed in order. Use `duckdb example-health.duckdb` to explore the database interactivley.
 
-### Quick Start
-```
-	git clone https://github.com/yourusername/example-health-analytics.git
-	cd example-health-analytics
+
+---
+
+## 3. A‑Z Run Instructions
+
+1. **Prerequisites**  
+   - Install Python 3.10 or 3.11.  
+   - Install Git.  
+   - (Optional) Install DuckDB CLI if you want to inspect the database manually – `duckdb example-health.duckdb`.
+
+2. **Clone the repository**  
+   ```bash
+   git clone https://github.com/yourusername/example-health-analytics.git
+   cd example-health-analytics
+   ```
+3. **Set up virtual environment**
+   	```bash
 	python3.10 -m venv venv
-	source venv/bin/activate
-	pip install -r requirements.txt
-	python scripts/00_generate_data.py
-	# then run DuckDB SQL scripts in order (or use run_all.py)	
-```
+	source venv/bin/activate   # Linux/macOS
+	# or
+	venv\Scripts\activate       # Windows
+	```
+4. **Install dependencies**
+   ```bash
+   pip install -r rrequirements.txt
+   ```
+5. Create local configuration
+   ```bash
+   cp config.default.yaml config.yaml
+   ```
+6. Generate synthetic data
+   ```bash
+   python scripts/00_generate_data.py
+   ```
+   This creates data/claims.parquet and ata/provider.json
+7. Run the full pipeline
+   ```bash
+   python scripts/run_all.py
+   ```
+8. Verify the results
+   ```bash
+   duckdb example-health.duckdb
+   ```
+   Then run:
+   ```sql
+   SELECT * FROM core.claims LIMIT 5;
+   SELECT * FROM core.providers LIMIT 5;
+   ```
+9. Explore further
+    - Add your own queries to `scritps/04_analysis.sql` and re-run `run_all.py`.
+    - Modify `config.yaml` to increase `num_claims` to 500k and tets performance.
