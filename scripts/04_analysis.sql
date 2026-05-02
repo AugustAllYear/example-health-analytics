@@ -5,11 +5,11 @@ WITH duplicate_claims_cte AS (
     GROUP BY claim_id
     HAVING COUNT(*) > 1
 )
-SELECT 8 FROM duplicate_claims_cte; -- usually empty
+SELECT * FROM duplicate_claims_cte; -- usually empty
 
 -- C. Complex query: aggregate by specialty, filter on avg claim amount
 SELECT
-    p.speciality,
+    p.specialty,
     COUNT(DISTINCT c.patient_id) AS unique_patients,
     COUNT(c.claim_id) AS total_claims,
     AVG(c.claim_amount) AS avg_claim_amt,
@@ -19,4 +19,4 @@ JOIN core.providers p ON c.provider_id = p.provider_id
 WHERE c.payment_status = 'paid'
 GROUP BY p.specialty
 HAVING AVG(c.claim_amount) > 1000
-ORDER BY avg_claim_amy DESC;
+ORDER BY avg_claim_amt DESC;
