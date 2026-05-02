@@ -55,4 +55,4 @@ with open(providers_path, "w") as f:
     json.dump(providers, f, indent=2)
 
 print(f"✅ Generated {num_claims} claims -> {claims_path}")
-print(f"✅ Generated {num_providers} providers -> {providers_path}")
+print(f"Generated {num_providers} providers -> {providers_path}")
