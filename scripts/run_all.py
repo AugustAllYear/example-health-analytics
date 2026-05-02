@@ -20,7 +20,7 @@ def main():
 
     # Execute SQL scripts in order
     for script_path in config["sql_scripts"]:
-        print(f"▶️ Running {script_path} ...")
+        print(f"Running {script_path} ...")
         try:
             conn.execute(f"read('{script_path}')")
         except Exception as e:
