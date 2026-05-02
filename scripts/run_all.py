@@ -24,7 +24,7 @@ def main():
         try:
             conn.execute(f"read('{script_path}')")
         except Exception as e:
-            print(f"❌ Error in {script_path}: {e}")
+            print(f"Error in {script_path}: {e}")
             sys.exit(1)
 
     print("All scripts executed successfully.")
