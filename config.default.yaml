@@ -13,7 +13,7 @@ duckdb:
     - core 
     - marts 
 sql_scripts: 
-  - scripts/01_setup/sql 
+  - scripts/01_setup.sql 
   - scripts/02_load.sql 
   - scripts/03_transform.sql 
   - scripts/04_analysis.sql 
